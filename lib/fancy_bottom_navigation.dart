@@ -126,9 +126,7 @@ class FancyBottomNavigationState extends State<FancyBottomNavigation>
       children: <Widget>[
         Container(
           height: BAR_HEIGHT,
-          decoration: BoxDecoration(color: barBackgroundColor, boxShadow: [
-            BoxShadow(color: shadowColor, offset: Offset(0, -1), blurRadius: 8)
-          ]),
+          decoration: BoxDecoration(color: barBackgroundColor),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -180,12 +178,8 @@ class FancyBottomNavigationState extends State<FancyBottomNavigation>
                                       width: CIRCLE_SIZE + CIRCLE_OUTLINE,
                                       height: CIRCLE_SIZE + CIRCLE_OUTLINE,
                                       decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          boxShadow: [
-                                            BoxShadow(
-                                                color: shadowColor,
-                                                blurRadius: 8)
-                                          ])),
+                                        shape: BoxShape.circle,
+                                      )),
                                 ),
                               )),
                         ),
@@ -200,7 +194,7 @@ class FancyBottomNavigationState extends State<FancyBottomNavigation>
                           width: CIRCLE_SIZE - 5,
                           child: Container(
                             decoration: BoxDecoration(
-                                shape: BoxShape.circle, 
+                                shape: BoxShape.circle,
                                 gradient: this.gradient,
                                 color: circleColor),
                             child: Padding(
