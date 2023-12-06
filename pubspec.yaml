@@ -3,9 +3,10 @@ description: An animated Bottom Navigation Bar for Flutter apps, icon animates i
 version: 0.3.3
 author: Smart Apeth <tony@smartapeth.com>
 homepage: https://github.com/tunitowen/fancy_bottom_navigation
+null_safety: true
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.19.0 <4.0.0"
 
 dependencies:
   flutter:
