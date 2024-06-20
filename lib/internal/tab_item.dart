@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 
+const double ALPHA_OFF = 0;
+const double ALPHA_ON = 1;
+const int ANIM_DURATION = 300;
 const double ICON_OFF = -3;
 const double ICON_ON = 0;
 const double TEXT_OFF = 3;
 const double TEXT_ON = 1;
-const double ALPHA_OFF = 0;
-const double ALPHA_ON = 1;
-const int ANIM_DURATION = 300;
 
 class TabItem extends StatelessWidget {
+  final UniqueKey uniqueKey;
+
+  final String title;
+  final IconData iconData;
+  final bool selected;
+  final Function(UniqueKey uniqueKey) callbackFunction;
+  final Color textColor;
+  final Color iconColor;
+  final double iconYAlign = ICON_ON;
+
+  final double textYAlign = TEXT_OFF;
+  final double iconAlpha = ALPHA_ON;
   TabItem(
       {required this.uniqueKey,
       required this.selected,
@@ -17,18 +29,6 @@ class TabItem extends StatelessWidget {
       required this.callbackFunction,
       required this.textColor,
       required this.iconColor});
-
-  final UniqueKey uniqueKey;
-  final String title;
-  final IconData iconData;
-  final bool selected;
-  final Function(UniqueKey uniqueKey) callbackFunction;
-  final Color textColor;
-  final Color iconColor;
-
-  final double iconYAlign = ICON_ON;
-  final double textYAlign = TEXT_OFF;
-  final double iconAlpha = ALPHA_ON;
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +44,22 @@ class TabItem extends StatelessWidget {
                 alignment: Alignment(0, (selected) ? TEXT_ON : TEXT_OFF),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    title,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600, color: textColor),
+                  child: AnimatedDefaultTextStyle(
+                    duration: Duration(milliseconds: ANIM_DURATION),
+                    style: selected
+                        ? TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: textColor,
+                          )
+                        : TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.transparent,
+                          ),
+                    child: Text(
+                      title,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
                   ),
                 )),
           ),
